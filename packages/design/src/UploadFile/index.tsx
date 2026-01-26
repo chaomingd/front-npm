@@ -9,6 +9,7 @@ import { useUploadModel } from './hooks/useUploadModel';
 import { FileListItemProps, UploadFileProps } from './type';
 import { getExt } from './utils/getExt';
 import { isImage } from './utils/isImage';
+import { CSS_PREFIX } from '../styles/var'
 
 const EXT_SVG = {
   zip: ZipSvg,
@@ -19,7 +20,7 @@ const EXT_SVG = {
   docx: DocSvg,
 };
 
-const preCls = '@chaomingd/upload-file';
+const preCls = `${CSS_PREFIX}-upload-file`;
 
 interface TextBtnProps {
   children: ReactNode;

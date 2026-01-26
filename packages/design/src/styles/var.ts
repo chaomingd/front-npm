@@ -1,3 +1,3 @@
 
 
-export const CSS_PREFIX = 'cm';
+export const CSS_PREFIX = 'cmd';

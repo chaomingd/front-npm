@@ -2,6 +2,9 @@ import { IConfig as IResizerConfig, useResizer } from '@chaomingd/hooks';
 import classNames from 'classnames';
 import { FC, HTMLAttributes, memo, MutableRefObject, useRef, useState } from 'react';
 import './index.less';
+import { CSS_PREFIX } from '../styles/var';
+
+const preCls = `${CSS_PREFIX}-resizer`;
 
 export interface ResizerProps extends HTMLAttributes<HTMLDivElement> {
   resizerConfig?: Omit<IResizerConfig, 'elRef'>;
@@ -66,21 +69,21 @@ const Resizer: FC<ResizerProps> = ({
         ...style,
         transition: resizing ? 'none' : undefined,
       }}
-      className={classNames('laf-resizer', className)}
+      className={classNames(preCls, className)}
     >
       <div
         ref={thumbRef}
         style={
           {
             ...(thumbStyle || {}),
-            '--laf-resizer-thumb-color': thumbColor,
+            [`--${preCls}-thumb-color`]: thumbColor,
           } as React.CSSProperties
         }
         className={classNames(
-          'laf-resizer-thumb',
+          `${preCls}-thumb`,
           thumbClassName,
-          resizing && 'laf-resizer-thumb-resizing',
-          `laf-resizer-thumb-direction-${direction}`,
+          resizing && `${preCls}-thumb-resizing`,
+          `${preCls}-thumb-direction-${direction}`,
         )}
       ></div>
       {children}

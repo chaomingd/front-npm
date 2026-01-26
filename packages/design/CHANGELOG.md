@@ -1,5 +1,11 @@
 # @chaomingd/design
 
+## 0.0.69
+
+### Patch Changes
+
+- 修复样式问题
+
 ## 0.0.68
 
 ### Patch Changes

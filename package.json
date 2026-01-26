@@ -14,7 +14,7 @@
   "scripts": {
     "create": "node scripts/run-create-template.js",
     "build:all": "pnpm run --if-present --recursive --filter \"@chaomingd/*\" build",
-    "build": "pnpm run --if-present --recursive --filter \"...[origin/master]\" build",
+    "build": "pnpm run --if-present --recursive --filter \"...[origin/main]\" build",
     "build:watch": "father dev",
     "dev": "dumi dev",
     "docs:build": "dumi build",

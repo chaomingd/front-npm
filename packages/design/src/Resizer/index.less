@@ -1,4 +1,7 @@
-.laf-resizer {
+@import '../styles/var.less';
+
+@preCls: ~'@{prefix}-resizer';
+.@{preCls} {
   position: relative;
 
   &-thumb {
@@ -9,11 +12,11 @@
     user-select: none;
 
     &:hover {
-      background-color: var(--laf-resizer-thumb-color);
+      background-color: var(--cmd-resizer-thumb-color);
     }
 
     &-resizing {
-      background-color: var(--laf-resizer-thumb-color);
+      background-color: var(--cmd-resizer-thumb-color);
 
       &::after {
         display: block;
