@@ -1,5 +1,10 @@
 name: Deploy Dumi to GitHub Pages
 
+permissions:
+  contents: write  # 允许读写仓库内容
+  pages: write     # 如果你用 Pages 部署，需要这行
+  id-token: write  # 如果需要 OIDC 部署，需要这行
+
 on:
   push:
     branches:
@@ -33,5 +38,5 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.DEPLOY_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docs-dist # 默认构建输出目录
