@@ -30,10 +30,8 @@ jobs:
       - name: Build project
         run: pnpm docs:build
 
-      - name: 部署到 GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          branch: gh-pages # 将构建结果推送到 gh-pages 分支
-          folder: docs-dist # 从 docs-dist 文件夹上传文件
-          # 注意：GITHUB_TOKEN 是 GitHub 自动生成的，无需手动配置
-          token:  $ {{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.DEPLOY_TOKEN }}
+          publish_dir: ./docs-dist # 默认构建输出目录
