@@ -1,0 +1,58 @@
+@import '../../../styles/var.less';
+
+.buttonIconType(@type) {
+  &-type-@{type} {
+    color: ~'var(--cm-icon-btn-@{type}-color)';
+
+    &:hover {
+      color: ~'var(--cm-icon-btn-@{type}-color-hover)';
+    }
+
+    &:active {
+      color: ~'var(--cm-icon-btn-@{type}-color-active)';
+    }
+    
+  }
+  &--disabled&-type-@{type} {
+    color: ~'var(--cm-icon-btn-@{type}-color-disabled)';
+  }
+}
+
+@fontSizeMap: {
+  @large: 32px;
+  @default: 24px;
+  @middle: 18px;
+  @small: 16px;
+}
+
+.buttonSize(@size) {
+  &-size--@{size} {
+    font-size: @fontSizeMap[@@size];
+  }
+}
+
+@preCls: ~'@{prefix}-icon-btn';
+
+.@{preCls} {
+  display: inline-block;
+  line-height: 1em;
+  // size
+  .buttonSize(default);
+  .buttonSize(middle);
+  .buttonSize(small);
+  .buttonSize(large);
+
+  // type
+  .buttonIconType(default);
+  .buttonIconType(primary);
+  .buttonIconType(danger);
+
+  &--clickable {
+    cursor: pointer;
+  }
+
+  &--disabled {
+    cursor: not-allowed;
+  }
+}
+

@@ -1,0 +1,40 @@
+{
+  "name": "@chaomingd/hooks",
+  "version": "0.0.34",
+  "description": "hooks of laf",
+  "keywords": [],
+  "license": "MIT",
+  "main": "dist/lib/index.js",
+  "module": "dist/esm/index.js",
+  "typings": "dist/esm/index.d.ts",
+  "files": [
+    "dist",
+    "compiled"
+  ],
+  "scripts": {
+    "build": "father build",
+    "build:deps": "father prebundle",
+    "dev": "father dev",
+    "prepublishOnly": "father doctor && npm run build"
+  },
+  "dependencies": {
+    "@chaomingd/store": "workspace:*",
+    "@chaomingd/utils": "workspace:*",
+    "@types/use-sync-external-store": "^0.0.6",
+    "use-sync-external-store": "^1.2.2"
+  },
+  "peerDependencies": {
+    "ahooks": ">=3.0.0",
+    "antd": "^5.18.2",
+    "react": ">=16.9.0",
+    "react-dom": ">=16.9.0"
+  },
+  "devDependencies": {
+    "father": "^4.5.0"
+  },
+  "authors": [],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
+}

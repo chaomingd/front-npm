@@ -1,0 +1,33 @@
+{
+  "name": "@chaomingd/utils",
+  "version": "0.0.17",
+  "description": "utils of laf",
+  "main": "dist/lib/index.js",
+  "module": "dist/esm/index.js",
+  "typings": "dist/esm/index.d.ts",
+  "scripts": {
+    "dev": "father dev",
+    "build": "father build",
+    "build:deps": "father prebundle"
+  },
+  "keywords": [],
+  "authors": [],
+  "license": "MIT",
+  "files": [
+    "dist",
+    "compiled"
+  ],
+  "devDependencies": {
+    "father": "^4.5.0"
+  },
+  "dependencies": {
+    "resize-observer-polyfill": "^1.5.1"
+  },
+  "peerDependencies": {
+    "@umijs/max": ">4.0.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
+}

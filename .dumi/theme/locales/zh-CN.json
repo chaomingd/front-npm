@@ -1,0 +1,33 @@
+{
+  "app.docs.components.icon.search.placeholder": "在此搜索图标，点击图标可复制代码",
+  "app.docs.components.icon.colorful": "彩色风格",
+  "app.docs.components.icon.circle-colorful": "圆形彩色",
+  "app.docs.components.icon.filled": "单色风格",
+  "app.docs.components.icon.circle-filled": "圆底单色",
+  "app.docs.components.icon.category.common": "常用图标",
+  "app.docs.components.icon.category.other": "其他图标",
+
+  "app.docs.site.index.banner.slogan": "高效的 React 组件库",
+  "app.docs.site.index.banner.button-text": "开始使用",
+
+  "app.docs.site.features.0.title": "基础组件",
+  "app.docs.site.features.0.description": "Ant Design Laf 的设计体系与 Ant Design 无缝衔接，开发者使用更容易。",
+  "app.docs.site.features.1.title": "业务组件",
+  "app.docs.site.features.1.description": "从业务中来，提炼自laf各个产品的通用能力。",
+  "app.docs.site.features.2.title": "可视化图表",
+  "app.docs.site.features.2.description": "基于Ant Design Charts 定制和扩展，是 laf 的图表最佳实践。",
+
+  "app.docs.site.theme.title": "随心所欲地定制主题",
+  "app.docs.site.theme.description": "开放更多的样式算法，使定制你的主题更加容易",
+
+  "app.docs.site.case.title": "丰富组件，轻松选择",
+  "app.docs.site.case.description": "满足您需求的大量实用组件，灵活的定制与扩展功能",
+  "app.docs.components.icon.outlined": "线框风格",
+  "app.docs.components.icon.two-tone": "双色风格",
+  "app.components.overview.search": "搜索组件",
+  "app.docs.components.icon.category.direction": "方向性图标",
+  "app.docs.components.icon.category.suggestion": "提示建议性图标",
+  "app.docs.components.icon.category.editor": "编辑类图标",
+  "app.docs.components.icon.category.data": "数据类图标",
+  "app.docs.components.icon.category.logo": "品牌和标识"
+}

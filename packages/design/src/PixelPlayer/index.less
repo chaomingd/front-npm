@@ -1,0 +1,29 @@
+.c-pixel-player {
+  &__container {
+    position: relative;
+    overflow: hidden;
+    width: 800px;
+    height: 400px;
+  }
+  &__video {
+    position: absolute;
+  }
+  &__placeholder {
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: #111;
+    &-text {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      left: 50%;
+      font-size: 20px;
+      color: #fff;
+letter-spacing: 1px;
+      top: 50%;
+    }
+  }
+}
