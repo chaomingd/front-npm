@@ -1,5 +1,11 @@
 # @chaomingd/store
 
+## 2.0.8
+
+### Patch Changes
+
+- 修复 store errorKey
+
 ## 2.0.7
 
 ### Patch Changes

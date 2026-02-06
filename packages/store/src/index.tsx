@@ -112,6 +112,7 @@ export class Model<
       if (typeof result === 'object' && result !== null) {
         this.setState({
           [loadingKey]: false,
+          [errorKey]: null,
           ...result,
         } as Partial<TState>);
       }
