@@ -1,6 +1,7 @@
 @import '../styles/var.less';
 
 @preCls: ~'@{prefix}-resizer';
+
 .@{preCls} {
   position: relative;
 
@@ -13,14 +14,6 @@
 
     &:hover {
       background-color: var(--cmd-resizer-thumb-color);
-    }
-
-    &-resizing {
-      background-color: var(--cmd-resizer-thumb-color);
-
-      &::after {
-        display: block;
-      }
     }
 
     &::after {
@@ -36,6 +29,16 @@
       cursor: inherit;
       display: none;
     }
+
+    &-resizing {
+      background-color: var(--cmd-resizer-thumb-color);
+
+      &::after {
+        display: block;
+      }
+    }
+
+
 
     &-direction-left {
       width: 2px;

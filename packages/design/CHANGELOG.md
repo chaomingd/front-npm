@@ -1,5 +1,11 @@
 # @chaomingd/design
 
+## 0.0.71
+
+### Patch Changes
+
+- 修复 resizer 组件样式
+
 ## 0.0.70
 
 ### Patch Changes
