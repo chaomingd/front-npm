@@ -1,4 +1,3 @@
 #/usr/bin/env sh
-
-changeset publish
+pnpm publish -r
 git push origin --tags
