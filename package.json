@@ -26,7 +26,7 @@
     "lint:eslint": "eslint --ext .ts,.tsx .",
     "prepare": "husky install && dumi setup",
     "prepublishOnly": "father doctor && npm run build",
-    "change:version": "pnpm changeset && changeset version && pnpm run build && pnpm run lint",
+    "change:version": "pnpm changeset && changeset version && pnpm run lint",
     "release": "npm run login:repository && sh scripts/deploy.sh",
     "login:repository": "sh scripts/pnpm-login.sh",
     "start": "npm run dev",
