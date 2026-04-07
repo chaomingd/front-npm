@@ -127,7 +127,10 @@ export function useResizer(config: IConfig) {
 }
 
 function handlerResizerMouseDown({ e, configRef, mousedownClientRef, store, deltaRef }: any) {
-  mousedownClientRef.current = pick(e, ['clientX', 'clientY']);
+  mousedownClientRef.current = {
+    clientX: Math.floor(e.clientX),
+    clientY: Math.floor(e.clientY),
+  };
   const deltaX = store.state.deltaX;
   const deltaY = store.state.deltaY;
   const direction = configRef.current.direction || 'left';
@@ -144,9 +147,9 @@ function handlerResizerMouseDown({ e, configRef, mousedownClientRef, store, delt
     service: (e: MouseEvent) => {
       e.preventDefault();
       if (isHorizantal) {
-        deltaRef.current.deltaX = e.clientX - mousedownClientRef.current.clientX;
+        deltaRef.current.deltaX = Math.floor(e.clientX) - mousedownClientRef.current.clientX;
       } else {
-        deltaRef.current.deltaY = e.clientY - mousedownClientRef.current.clientY;
+        deltaRef.current.deltaY = Math.floor(e.clientY) - mousedownClientRef.current.clientY;
       }
       const newDelta = strictDelta(
         isHorizantal

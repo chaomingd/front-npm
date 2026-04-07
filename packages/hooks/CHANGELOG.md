@@ -1,5 +1,11 @@
 # @chaomingd/hooks
 
+## 0.0.36
+
+### Patch Changes
+
+- 修复 useResizer hooks 出现小数问题
+
 ## 0.0.35
 
 ### Patch Changes

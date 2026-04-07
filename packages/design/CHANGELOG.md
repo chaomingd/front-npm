@@ -1,5 +1,13 @@
 # @chaomingd/design
 
+## 0.0.72
+
+### Patch Changes
+
+- 修复 useResizer hooks 出现小数问题
+- Updated dependencies
+  - @chaomingd/hooks@0.0.36
+
 ## 0.0.71
 
 ### Patch Changes
