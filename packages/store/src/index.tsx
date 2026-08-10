@@ -97,32 +97,36 @@ export class Model<
       config,
     } = options || {};
     if (!this.asyncManagerMap[name]) {
-      this.asyncManagerMap[name] = new AsyncManager(config);
-    }
-    const asyncManager = this.asyncManagerMap[name];
-    asyncManager.offAllListeners();
-    asyncManager.on('loading', () => {
-      if (showLoading) {
-        this.setState({
-          [loadingKey]: true,
-        } as Partial<TState>);
-      }
-    });
-    asyncManager.on('success', (result) => {
-      if (typeof result === 'object' && result !== null) {
-        this.setState({
+      const asyncManager = new AsyncManager(config);
+      this.asyncManagerMap[name] = asyncManager as any;
+      asyncManager.offAllListeners();
+      asyncManager.on('loading', () => {
+        if (showLoading) {
+          this.setState({
+            [loadingKey]: true,
+          } as Partial<TState>);
+        }
+      });
+      asyncManager.on('success', (result) => {
+        const state = {
           [loadingKey]: false,
           [errorKey]: null,
-          ...result,
+        };
+        if (typeof result === 'object' && result !== null) {
+          Object.assign({
+            ...result,
+          });
+        }
+        this.setState(state as Partial<TState>);
+      });
+      asyncManager.on('error', (error) => {
+        this.setState({
+          [loadingKey]: false,
+          [errorKey]: error,
         } as Partial<TState>);
-      }
-    });
-    asyncManager.on('error', (error) => {
-      this.setState({
-        [loadingKey]: false,
-        [errorKey]: error,
-      } as Partial<TState>);
-    });
+      });
+    }
+
     return this.asyncManagerMap[name];
   }
   subscribe(func: TSubscribeFunc<TState, TEffects, UserData>, name?: string) {

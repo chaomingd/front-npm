@@ -1,5 +1,11 @@
 # @chaomingd/store
 
+## 3.0.0
+
+### Major Changes
+
+- 修复 asyncMangerloading 问题
+
 ## 2.0.8
 
 ### Patch Changes
