@@ -42,8 +42,8 @@ export class AsyncManager<
     return new Promise((resolve, reject) => {
       const _exec = () => {
         const lastAbortController = this.abortSignalMap[execId - 1] || null;
-        const abortController = (this.abortSignalMap[execId] =
-          new AbortController());
+        lastAbortController?.abort();
+        const abortController = (this.abortSignalMap[execId] = new AbortController());
         fn(
           {
             lastAbortController,
@@ -54,10 +54,10 @@ export class AsyncManager<
           .then((res) => {
             if (execId === this.execId) {
               this.emit('success', res);
+              this.emit('finish', null, res);
             }
             resolve(res);
             delete this.abortSignalMap[execId];
-            this.emit('finish', null, res);
             return res;
           })
           .catch((e) => {
@@ -74,7 +74,6 @@ export class AsyncManager<
               }
             } else {
               delete this.abortSignalMap[execId];
-              this.emit('finish', e, null);
               reject(e);
             }
             tryCount++;

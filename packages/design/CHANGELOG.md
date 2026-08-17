@@ -1,5 +1,13 @@
 # @chaomingd/design
 
+## 0.0.74
+
+### Patch Changes
+
+- Updated dependencies
+  - @chaomingd/store@3.0.1
+  - @chaomingd/hooks@0.0.38
+
 ## 0.0.73
 
 ### Patch Changes

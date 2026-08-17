@@ -25,7 +25,9 @@ const Input = () => {
       <input
         value={value}
         onInput={(e) => {
-          model.getEffect('changeValue')((e.target as HTMLInputElement).value);
+          model.setState({
+            value: (e.target as HTMLInputElement).value,
+          });
         }}
       />
       <div>userName: {value}</div>

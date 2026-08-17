@@ -1,5 +1,11 @@
 # @chaomingd/store
 
+## 3.0.1
+
+### Patch Changes
+
+- 修复 store
+
 ## 3.0.0
 
 ### Major Changes
