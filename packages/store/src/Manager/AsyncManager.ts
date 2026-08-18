@@ -64,7 +64,13 @@ export class AsyncManager<
             if (execId === this.execId) {
               if (tryCount < (this.options.retryCount || 0)) {
                 setTimeout(() => {
-                  _exec();
+                  // 已被新的 exec 取代时不再重试，避免幽灵请求
+                  if (execId === this.execId) {
+                    _exec();
+                  } else {
+                    delete this.abortSignalMap[execId];
+                    reject(e);
+                  }
                 }, this.options.retryInterval || DEFAULT_TIMEOUT);
               } else {
                 this.emit('error', e);

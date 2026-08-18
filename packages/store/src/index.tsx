@@ -60,6 +60,7 @@ export class Model<
       ) => Promise<Partial<TState>>
     >
   > = {};
+  asyncManagerDisposeMap: Record<string, (() => void)[]> = {};
   _isInited = false;
   constructor(public config: IModelConfig<TState, TEffects, UserData>) {
     if (config.autoInit !== false) {
@@ -100,34 +101,40 @@ export class Model<
       this.asyncManagerMap[name] = new AsyncManager(config);
     }
     const asyncManager = this.asyncManagerMap[name];
-    asyncManager.offAllListeners();
-    asyncManager.on('loading', () => {
-      if (showLoading) {
+    if (config) {
+      asyncManager.options = { ...asyncManager.options, ...config };
+    }
+    // 只清理上一次自身注册的监听，避免误删外部注册的 finish 等回调
+    this.asyncManagerDisposeMap[name]?.forEach((off) => off());
+    this.asyncManagerDisposeMap[name] = [
+      asyncManager.on('loading', () => {
+        if (showLoading) {
+          this.setState({
+            [loadingKey]: true,
+          } as Partial<TState>);
+        }
+      }),
+      asyncManager.on('success', (result) => {
+        const state = {
+          [loadingKey]: false,
+          [errorKey]: null,
+        };
+        if (typeof result === 'object' && result !== null) {
+          Object.assign(state, {
+            ...result,
+          });
+        }
+        this.setState(state as Partial<TState>);
+      }),
+      asyncManager.on('error', (error) => {
         this.setState({
-          [loadingKey]: true,
+          [loadingKey]: false,
+          [errorKey]: error,
         } as Partial<TState>);
-      }
-    });
-    asyncManager.on('success', (result) => {
-      const state = {
-        [loadingKey]: false,
-        [errorKey]: null,
-      };
-      if (typeof result === 'object' && result !== null) {
-        Object.assign(state, {
-          ...result,
-        });
-      }
-      this.setState(state as Partial<TState>);
-    });
-    asyncManager.on('error', (error) => {
-      this.setState({
-        [loadingKey]: false,
-        [errorKey]: error,
-      } as Partial<TState>);
-    });
+      }),
+    ];
 
-    return this.asyncManagerMap[name];
+    return asyncManager;
   }
   subscribe(func: TSubscribeFunc<TState, TEffects, UserData>, name?: string) {
     const subscribeName = this.getSubscribeName(name);
